@@ -1,53 +1,65 @@
 :host {
     display: flex;
     justify-content: center;
-    margin: 100px 0px;
-  }
+  margin: 100px 0;
+}
 
-  .mat-form-field {
-    width: 100%;
-    min-width: 300px;
-  }
+.login-card {
+  max-width: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
 
 .mat-card-title {
   text-align: center;
 }
-  mat-card-content {
-    display: flex;
-    justify-content: center;
-  }
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
 ::ng-deep .mat-card-header-text {
 
   margin: 0px ! important;
 }
-  mat-card-header {
-   display: flex;
-   justify-content: center;
-  }
-  mat-card-header img {
-    width: 30%;
-    height: 30%;
-    margin-top: 5px;
-  }
+mat-card-header {
+ display: flex;
+ justify-content: center;
+}
+mat-card-header img {
+  width: 30%;
+  height: 30%;
+  margin-top: 5px;
+}
 
-  .error {
-    padding: 16px;
-    width: 300px;
-    color: white;
-    background-color: red;
-  }
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
 
-  .button {
-    display: flex;
-    justify-content: flex-end;
-  }
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .mat-card:not([class*=mat-elevation-z]) {
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,1),
-    0 1px 1px 0 rgba(0,0,0,1),
-    0 1px 3px 0 rgba(0,0,0,1);
-  }
-  input:-webkit-autofill +label{
-    -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
-  }
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,1),
+  0 1px 1px 0 rgba(0,0,0,1),
+  0 1px 3px 0 rgba(0,0,0,1);
+}
+
+input:-webkit-autofill +label{
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+
+.error-msg {
+  margin-bottom: 20px;
+  text-align: center;
+  color: red;
+  font-size: 20px;
+}

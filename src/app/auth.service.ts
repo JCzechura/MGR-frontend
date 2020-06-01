@@ -1,49 +1,51 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { UserData } from './userData';
-
-
-
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {AuthData, UserData} from './login.model';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {BackendService} from "./services/backend.service";
+import {jwtConfig} from "../environments/jwt-config";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private authUrl = 'http://localhost:8089/auth/token';  // URL to web api
-  private isUserIncorrect = false;
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
-    private http: HttpClient) { }
-
-  /** GET hero by id. Will 404 if id not found */
-  getToken(userData: UserData ) {
-      return this.http.post(this.authUrl, userData, this.httpOptions).pipe(
-        catchError(this.handleError<String>('getToken', ""))
-      );
+      private http: HttpClient,
+      private backendService: BackendService,
+      private jwtHelper: JwtHelperService) {
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-      this.isUserIncorrect = true;
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  signIn(userData: UserData): Promise<AuthData> {
+    this.setLogin(userData.login);
+    return this.backendService
+        .signIn(userData)
+        .toPromise();
   }
 
-  setUserIncorrect(state: boolean) {
-    this.isUserIncorrect = state;
+  setToken(token: string) {
+    localStorage.setItem(jwtConfig.localStorageTokenKey, token);
   }
 
-  getUserIncorrect() {
-    return this.isUserIncorrect;
+  setLogin(login: string) {
+    localStorage.setItem('login', login);
+  }
+
+  setRole(role: string) {
+    localStorage.setItem('role', role);
+  }
+
+  storeUserAuthData(token: string) {
+    const login = this.jwtHelper.decodeToken(token).sub;
+    const role = this.jwtHelper.decodeToken(token).enable;
+    this.setLogin(login);
+    this.setRole(role);
+    this.setToken(token);
+  }
+
+  isLogged(): boolean {
+    return !this.jwtHelper.isTokenExpired();
+  }
+
+  signOut() {
+    localStorage.removeItem(jwtConfig.localStorageTokenKey);
   }
 }

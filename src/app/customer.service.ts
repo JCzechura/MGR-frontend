@@ -23,9 +23,9 @@ export class CustomerService {
     localStorage.setItem("enableAsDriver", enable);
   }
   isLoggedAsDispatcher() {
-    return localStorage.getItem(TOKEN) != null && localStorage.getItem("enableAsDispatcher") != null;
+    return localStorage.getItem('token') != null && localStorage.getItem("role").match('^driver&dispatcher|dispatcher$');
   }
   isLoggedAsDriver() {
-    return localStorage.getItem(TOKEN) != null && localStorage.getItem("enableAsDriver") != null;
+    return localStorage.getItem('token') != null && localStorage.getItem("enableAsDriver") != null;
   }
 }
