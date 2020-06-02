@@ -19,9 +19,15 @@
     justify-content: space-between;
     align-items: baseline;
 }
+.user-form-list-item-content mat-form-field{
+    width: 12vw;
+}
 .user-form-list-item-submit {
     margin-left: 10vw;
     width: 50%;
     display: flex;
     justify-content: flex-end;
+}
+.user-form-list-item-submit button, .user-form-list-item-content button{
+    width: 12vw;
 }

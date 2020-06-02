@@ -1,5 +1,6 @@
 import {jwtConfig} from "../../../environments/jwt-config";
 
 export function tokenGetter() {
-    return 'Bearer '+ localStorage.getItem(jwtConfig.localStorageTokenKey);
+    console.log('pobieram');
+    return localStorage.getItem(jwtConfig.localStorageTokenKey);
 }
