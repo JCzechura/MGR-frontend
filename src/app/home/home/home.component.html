@@ -1,0 +1,26 @@
+<div class="home">
+    <div class="home__toolbar">
+        <app-title-toolbar></app-title-toolbar>
+    </div>
+</div>
+<nav mat-tab-nav-bar>
+    <div *ngFor="let link of navLinks">
+    <a mat-tab-link
+       *ngIf="link.show"
+       [routerLink]="link.link"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+        {{link.label}}
+    </a>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+<!--<mat-tab-group color="primary" #tabGroup>-->
+<!--    <mat-tab label="Employee">-->
+<!--        <app-testoo *ngIf="tabGroup.selectedIndex === 0"></app-testoo>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Department" #tabDepartment>-->
+<!--        <app-testowy *ngIf="tabGroup.selectedIndex === 1"></app-testowy>-->
+<!--    </mat-tab>-->
+<!--</mat-tab-group>-->

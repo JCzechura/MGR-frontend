@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AuthData, UserData} from './login.model';
+import {AuthData, UserData} from '../login/login.model';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {BackendService} from "./services/backend.service";
-import {jwtConfig} from "../environments/jwt-config";
+import {BackendService} from "./backend.service";
+import {jwtConfig} from "../../environments/jwt-config";
+import {Role} from "../core/authorization/authorization.model";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -29,8 +30,12 @@ export class AuthService {
     localStorage.setItem('login', login);
   }
 
-  setRole(role: string) {
+  setRole(role: Role) {
     localStorage.setItem('role', role);
+  }
+
+  getRole(): Role {
+    return <Role>localStorage.getItem('role');
   }
 
   storeUserAuthData(token: string) {

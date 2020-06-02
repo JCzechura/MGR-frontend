@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+
+$SmartKamClient-primary-palette: (
+  50: #e2f2f4,
+  100: #bbfab5,
+  200: #6ccf76,
+  300: #61ba44,
+  400: #52a943,
+  500: #669a3b,
+  600: #1d8d14,
+  700: #1c5c0d,
+  800: #296d38,
+  900: #05501e,
+  A100: #9fe2b5,
+  A200: #4ccb72,
+  A400: #307c59,
+  A700: #036b24,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$SmartKamClient-accent-palette: (
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+  A100: #f7f7f7,
+  A200: #f1efef,
+  A400: #CFCCCC,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$SmartKamClient-primary: mat-palette($SmartKamClient-primary-palette);
+$SmartKamClient-accent: mat-palette($SmartKamClient-accent-palette);
+
+// The warn palette is optional (defaults to red).
+// Create the theme object (a Sass map containing all of the palettes).
+$SmartKamClient-primary-theme: mat-light-theme($SmartKamClient-primary, $SmartKamClient-accent);

@@ -12,25 +12,25 @@
 <path style="fill:#556080;" d="M42.838,59H14.297c-1.507,0-2.729-1.222-2.729-2.729V20h34v36.271C45.567,57.778,44.345,59,42.838,59
 	z"/>
 <g>
-	<circle style="fill:#7383BF;" cx="16.567" cy="28" r="1"/>
-	<circle style="fill:#7383BF;" cx="16.567" cy="34" r="1"/>
-	<circle style="fill:#7383BF;" cx="19.567" cy="25" r="1"/>
-	<circle style="fill:#7383BF;" cx="25.567" cy="25" r="1"/>
-	<circle style="fill:#7383BF;" cx="19.567" cy="31" r="1"/>
-	<circle style="fill:#7383BF;" cx="25.567" cy="31" r="1"/>
-	<circle style="fill:#7383BF;" cx="22.567" cy="28" r="1"/>
-	<circle style="fill:#7383BF;" cx="28.567" cy="28" r="1"/>
-	<circle style="fill:#7383BF;" cx="22.567" cy="34" r="1"/>
-	<circle style="fill:#7383BF;" cx="28.567" cy="34" r="1"/>
-	<circle style="fill:#7383BF;" cx="31.567" cy="25" r="1"/>
-	<circle style="fill:#7383BF;" cx="37.567" cy="25" r="1"/>
-	<circle style="fill:#7383BF;" cx="31.567" cy="31" r="1"/>
-	<circle style="fill:#7383BF;" cx="37.567" cy="31" r="1"/>
-	<circle style="fill:#7383BF;" cx="34.567" cy="28" r="1"/>
-	<circle style="fill:#7383BF;" cx="40.567" cy="28" r="1"/>
-	<circle style="fill:#7383BF;" cx="34.567" cy="34" r="1"/>
-	<circle style="fill:#7383BF;" cx="40.567" cy="34" r="1"/>
-	<circle style="fill:#7383BF;" cx="16.567" cy="40" r="1"/>
+	<circle style="fill:#32FA58;" cx="16.567" cy="28" r="4"/>
+	<circle style="fill:#32FA58;" cx="16.567" cy="34" r="1"/>
+	<circle style="fill:#32FA58;" cx="19.567" cy="25" r="1"/>
+	<circle style="fill:#32FA58;" cx="25.567" cy="25" r="1"/>
+	<circle style="fill:#32FA58;" cx="19.567" cy="31" r="1"/>
+	<circle style="fill:#32FA58;" cx="25.567" cy="31" r="1"/>
+	<circle style="fill:#32FA58;" cx="22.567" cy="28" r="1"/>
+	<circle style="fill:#32FA58;" cx="28.567" cy="28" r="1"/>
+	<circle style="fill:#32FA58;" cx="22.567" cy="34" r="1"/>
+	<circle style="fill:#32FA58;" cx="28.567" cy="34" r="1"/>
+	<circle style="fill:#32FA58;" cx="31.567" cy="25" r="1"/>
+	<circle style="fill:#32FA58;" cx="37.567" cy="25" r="1"/>
+	<circle style="fill:#32FA58;" cx="31.567" cy="31" r="1"/>
+	<circle style="fill:#32FA58;" cx="37.567" cy="31" r="1"/>
+	<circle style="fill:#32FA58;" cx="34.567" cy="28" r="1"/>
+	<circle style="fill:#32FA58;" cx="40.567" cy="28" r="1"/>
+	<circle style="fill:#32FA58;" cx="34.567" cy="34" r="1"/>
+	<circle style="fill:#32FA58;" cx="40.567" cy="34" r="1"/>
+	<circle style="fill:#32FA58;" cx="16.567" cy="40" r="1"/>
 	<circle style="fill:#7383BF;" cx="16.567" cy="46" r="1"/>
 	<circle style="fill:#7383BF;" cx="19.567" cy="37" r="1"/>
 	<circle style="fill:#7383BF;" cx="25.567" cy="37" r="1"/>

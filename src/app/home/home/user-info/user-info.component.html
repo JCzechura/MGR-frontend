@@ -1,0 +1,64 @@
+<div class="main-container">
+    <h3>Moje dane:</h3>
+    <mat-divider></mat-divider>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-list>
+            <mat-list-item class="user-form-list-item">
+                <div class="user-form-list-item-content">
+                    <div>nazwa użytkownika</div>
+                    <mat-form-field appearance="outline">
+                        <input type="text"
+                               class="form-control form-control-solid placeholder-no-fix"
+                               matInput
+                               required
+                               id="username"
+                               formControlName="username">
+                    </mat-form-field>
+                </div>
+            </mat-list-item>
+            <mat-list-item class="user-form-list-item">
+                <div class="user-form-list-item-content">
+                    <div>rola</div>
+                    <mat-form-field appearance="outline">
+                        <input type="text"
+                               class="form-control form-control-solid placeholder-no-fix"
+                               matInput
+                               required
+                               id="role"
+                               formControlName="role">
+                    </mat-form-field>
+                </div>
+            </mat-list-item>
+            <mat-list-item class="user-form-list-item">
+                <div class="user-form-list-item-content">
+                    <div>opis</div>
+                    <mat-form-field appearance="outline">
+                        <input type="text"
+                               class="form-control form-control-solid placeholder-no-fix"
+                               matInput
+                               required
+                               id="description"
+                               formControlName="description">
+                    </mat-form-field>
+                </div>
+            </mat-list-item>
+            <mat-list-item class="user-form-list-item">
+                <div class="user-form-list-item-submit">
+                    <button type="submit" mat-flat-button color="primary">ZAPISZ ZMIANY</button>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </form>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item>
+            <div>Pepper</div>
+        </mat-list-item>
+        <mat-list-item>
+            <div> Salt</div>
+        </mat-list-item>
+        <mat-list-item>
+            <div> Paprika</div>
+        </mat-list-item>
+    </mat-list>
+</div>

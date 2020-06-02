@@ -1,0 +1,19 @@
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import 'styles/primary-theme';
+@import 'styles/custom-components-themes';
+
+@include angular-material-theme($SmartKamClient-primary-theme);
+@include custom-components-theme($SmartKamClient-primary-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field.mat-form-field {
+    font-size: 14px;
+}
+

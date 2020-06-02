@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/enviroment";
-import {AuthData, UserData} from "../login.model";
+import {AuthData, UserData} from "../login/login.model";
 import {catchError} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MonoTypeOperatorFunction, Observable} from "rxjs";

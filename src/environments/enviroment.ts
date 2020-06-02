@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    backendUrl: 'http://localhost:8090/rest/',
+    backendUrl: 'http://localhost:8091/rest/',
     authUrl: 'http://localhost:8089/auth/token/',
 };
 

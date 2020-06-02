@@ -3,7 +3,7 @@
         BŁĄD: odmowa dostępu!
   </div>
   <mat-card-header>
-    <img src="assets/garbage.svg" alt="Application logo">
+    <img src="assets/trash.svg" alt="Application logo">
   </mat-card-header>
       <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="submit()">
@@ -24,7 +24,7 @@
               <mat-label>
                   <label for="password">Hasło</label>
               </mat-label>
-              <input type="text"
+              <input type="password"
                      class="form-control form-control-solid placeholder-no-fix"
                      matInput
                      required
@@ -34,7 +34,7 @@
               <mat-error *ngIf="form.controls['password'].errors">to pole jest wymagane</mat-error>
           </mat-form-field>
         <div class="button">
-          <button type="submit" mat-stroked-button color="primary">Login</button>
+          <button type="submit" mat-flat-button color="primary">Login</button>
         </div>
       </form>
      </mat-card-content>

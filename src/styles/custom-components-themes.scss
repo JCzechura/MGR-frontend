@@ -1,0 +1,11 @@
+/**
+ * In this mixin we are including custom styled components mixins
+ */
+
+@import "../app/login/login.component.scss-theme";
+@import "../app/ui/title-toolbar/title-toolbar/title-toolbar.component.scss-theme";
+
+@mixin custom-components-theme($theme) {
+  @include login-component-theme($theme);
+  @include title-toolbar-component-theme($theme);
+}

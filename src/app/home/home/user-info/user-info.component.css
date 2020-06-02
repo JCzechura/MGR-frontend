@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 90%;
+}
+
+.user-form-list-item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.user-form-list-item-content {
+    margin-left: 10vw;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.user-form-list-item-submit {
+    margin-left: 10vw;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,46 @@
+.filler {
+  flex: 1 1 auto;
+}
+
+button.toolbar-btn {
+  text-transform: uppercase;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  .title__text {
+    line-height: initial;
+    margin: {
+      left: 5px;
+      right: 16px;
+      bottom: 2px;
+    }
+  }
+}
+
+.header-main-container {
+  display: flex;
+  align-items: center;
+
+  .mat-toolbar {
+    width: 86px;
+    text-align: center;
+
+    .test-version-info {
+      display: table;
+      white-space: normal;
+      line-height: initial;
+      font-size: medium;
+      margin: {
+        top: 4px;
+      }
+    }
+  }
+
+}
+
+.mat-toolbar {
+  height: 56px;
+}

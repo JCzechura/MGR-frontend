@@ -8,20 +8,19 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {appRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
-import {UserAsDriverComponent} from './user-as-driver/user-as-driver.component';
-import {UserAsDispatcherComponent} from './user-as-dispatcher/user-as-dispatcher.component';
-
-import {NeedAuthGuardDispatcher} from './need-auth-guard-dispatcher';
-import {NeedAuthGuardDriver} from './need-auth-guard-driver';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {JwtModule} from "@auth0/angular-jwt";
 import {jwtConfig} from "../environments/jwt-config";
-import {tokenGetter} from "./token-getter";
+import {tokenGetter} from "./core/authorization/token-getter";
+import {AuthGuard} from "./core/route-guards/auth.guard";
+import {NonAuthGuard} from "./core/route-guards/non-auth.guard";
+import {TitleToolbarModule} from "./ui/title-toolbar";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
     imports: [
+        TitleToolbarModule,
         ReactiveFormsModule,
         BrowserModule,
         FormsModule,
@@ -41,18 +40,17 @@ import {tokenGetter} from "./token-getter";
                 skipWhenExpired: true,
             }
         }),
+        MatTabsModule,
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
         LoginComponent,
-        UserAsDriverComponent,
-        UserAsDispatcherComponent
     ],
     providers: [
-        NeedAuthGuardDispatcher,
-        NeedAuthGuardDriver
+        AuthGuard,
+        NonAuthGuard
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { };
+export class AppModule {
+}
