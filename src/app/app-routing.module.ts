@@ -1,6 +1,4 @@
 import {RouterModule, Routes} from '@angular/router';
-
-import {HomeComponent} from './home/home/home.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./core/route-guards/auth.guard";
 import {NonAuthGuard} from "./core/route-guards/non-auth.guard";

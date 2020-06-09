@@ -5,3 +5,7 @@ export class UserDetails {
     role: string;
     password: string;
 }
+export class UserPasswordData {
+    id: number;
+    password: string;
+}

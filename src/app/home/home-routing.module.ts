@@ -4,7 +4,7 @@ import {AuthGuard} from '../core/route-guards/auth.guard';
 import {HomeComponent} from "./home/home.component";
 import {UserInfoComponent} from "./home/user-info/user-info.component";
 import {GarbageTruckRoutesComponent} from "./home/garbage-truck-routes/garbage-truck-routes.component";
-import {DataBaseComponent} from "./home/data-base/data-base.component";
+import {DataBaseComponent} from "./home/data-base/data-base/data-base.component";
 import {CurrentRouteComponent} from "./home/current-route/current-route.component";
 import {ReportComponent} from "./home/report/report.component";
 
