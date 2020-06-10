@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {map} from "rxjs/operators";
-import {Metadata} from "./data-base-option.model";
+import {Metadata} from "../data-base.model";
 import {DataBaseService} from "../data-base.service";
 import {MatRadioChange} from "@angular/material/radio";
 
@@ -12,18 +11,24 @@ import {MatRadioChange} from "@angular/material/radio";
 })
 export class DataBaseOptionListComponent implements OnInit {
 
+
   metaDataValue: Metadata;
   metaData$: Observable<Metadata[]> = this.dataBaseService.dictionariesMetadata$;
   readonly addDictButtonSubject$: Subject<void> = new Subject<void>();
-  private readonly _selectedDict$ = new BehaviorSubject<Metadata | null>(null);
-  onMetaDataSelected$ = this._selectedDict$.asObservable();
+  private readonly _selectedMetaData$ = new BehaviorSubject<string | null>(null);
+  onMetaDataSelected$ = this._selectedMetaData$.asObservable();
+
   constructor(private dataBaseService: DataBaseService) { }
 
   ngOnInit() {
+    this._selectedMetaData$.subscribe(
+        (val) => console.log(val)
+    );
   }
 
   onMetaDataSelected($event: MatRadioChange) {
     this.metaDataValue = $event.value;
-    this._selectedDict$.next($event.value);
+    this.dataBaseService.tableName = $event.value.tableName;
+    this.dataBaseService.selectedMetaData = $event.value;
   }
 }

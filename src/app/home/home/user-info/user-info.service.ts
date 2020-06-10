@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BackendService} from "../../../services/backend.service";
+import {BackendService} from "../../../core/backend/backend.service";
 import {urlList} from "../../../../environments/url-list";
 import {pluck} from "rxjs/operators";
 

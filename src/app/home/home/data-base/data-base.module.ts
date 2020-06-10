@@ -5,6 +5,10 @@ import {DataBaseOptionListComponent} from './data-base-option-list/data-base-opt
 import { DataBaseTableComponent } from './data-base-table/data-base-table.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -17,6 +21,10 @@ import {FormsModule} from "@angular/forms";
         CommonModule,
         MatRadioModule,
         FormsModule,
+        MatTableModule,
+        MatSortModule,
+        MatCheckboxModule,
+        MatPaginatorModule,
     ]
 })
 export class DataBaseModule { }

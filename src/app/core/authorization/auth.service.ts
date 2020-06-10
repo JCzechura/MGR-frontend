@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AuthData, UserData} from '../login/login.model';
+import {AuthData, UserData} from '../../login/login.model';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {BackendService} from "./backend.service";
-import {jwtConfig} from "../../environments/jwt-config";
-import {Role} from "../core/authorization/authorization.model";
+import {BackendService} from "../backend/backend.service";
+import {jwtConfig} from "../../../environments/jwt-config";
+import {Role} from "./authorization.model";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

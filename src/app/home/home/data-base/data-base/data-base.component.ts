@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataBaseService} from "../data-base.service";
 
 @Component({
   selector: 'app-data-base',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataBaseService: DataBaseService) { }
 
   ngOnInit() {
   }

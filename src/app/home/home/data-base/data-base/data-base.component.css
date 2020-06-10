@@ -1,9 +1,10 @@
 .container {
     display: flex;
+    height: 85vh;
 }
 app-data-base-option-list {
     flex-grow: 0.4;
-    min-width: 20vw;
+    min-width: 17vw;
 }
 app-data-base-table {
     flex-grow: 4;

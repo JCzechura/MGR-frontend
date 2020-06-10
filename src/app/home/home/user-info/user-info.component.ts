@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "../../../services/user.service";
+import {UserService} from "./user.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BackendService} from "../../../services/backend.service";
+import {BackendService} from "../../../core/backend/backend.service";
 import {urlList} from "../../../../environments/url-list";
-import {UserDetails} from "../../../models/user-details.model";
+import {UserDetails} from "./user-details.model";
 import {MatDialog} from "@angular/material/dialog";
 import {PasswordChangeDialogComponent} from "./password-change-dialog/password-change-dialog.component";
 import {takeUntil, tap} from "rxjs/operators";
 import {Subject} from "rxjs";
-import {AuthService} from "../../../services/auth.service";
+import {AuthService} from "../../../core/authorization/auth.service";
 import {Router} from "@angular/router";
 
 @Component({

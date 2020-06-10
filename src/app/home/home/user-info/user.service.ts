@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BackendService} from "./backend.service";
-import {urlList} from "../../environments/url-list";
-import {UserDetails} from "../models/user-details.model";
+import {BackendService} from "../../../core/backend/backend.service";
+import {urlList} from "../../../../environments/url-list";
+import {UserDetails} from "./user-details.model";
 
 @Injectable({
   providedIn: 'root'

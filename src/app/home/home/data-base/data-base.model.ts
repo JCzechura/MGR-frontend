@@ -13,3 +13,16 @@ export interface Metadata {
     attrib_06_Desc: string;
     attrib_06_Type: string;
 }
+
+export interface DatabaseEntry {
+    tableName: string;
+    attrib01: string;
+    attrib02: string;
+    attrib03: string;
+    attrib04: string;
+    attrib05: string;
+}
+export interface PageChange {
+    pageIndex: number;
+    pageSize: number;
+}

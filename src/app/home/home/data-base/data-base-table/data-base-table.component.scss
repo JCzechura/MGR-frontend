@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    flex-flow: column;
+
+}
+
+.dict-table {
+    flex: 1;
+
+
+    table {
+        width: 90%;
+    }
+
+}
