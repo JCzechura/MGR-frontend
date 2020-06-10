@@ -16,13 +16,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { PasswordChangeDialogComponent } from './home/user-info/password-change-dialog/password-change-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {DataBaseModule} from "./home/data-base/data-base.module";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
     declarations: [
         UserInfoComponent,
         GarbageTruckRoutesComponent,
-        DataBaseComponent,
         HomeComponent,
         CurrentRouteComponent,
         ReportComponent,
@@ -38,7 +39,9 @@ import {MatDialogModule} from "@angular/material/dialog";
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
-        MatDialogModule
+        MatDialogModule,
+        DataBaseModule,
+        MatTooltipModule
     ],
     entryComponents: [
         PasswordChangeDialogComponent

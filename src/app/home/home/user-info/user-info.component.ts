@@ -6,8 +6,10 @@ import {urlList} from "../../../../environments/url-list";
 import {UserDetails} from "../../../models/user-details.model";
 import {MatDialog} from "@angular/material/dialog";
 import {PasswordChangeDialogComponent} from "./password-change-dialog/password-change-dialog.component";
-import {switchMap, takeUntil, tap} from "rxjs/operators";
+import {takeUntil, tap} from "rxjs/operators";
 import {Subject} from "rxjs";
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-user-info',
@@ -21,7 +23,9 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     constructor(private userService: UserService,
                 private fb: FormBuilder,
                 public dialog: MatDialog,
-                private backendService: BackendService) {
+                private backendService: BackendService,
+                private authService: AuthService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -43,7 +47,9 @@ export class UserInfoComponent implements OnInit, OnDestroy {
                 takeUntil(this.ngDestroy$.asObservable())
             ).subscribe(value => {
                 console.log(value);
-                this.form.patchValue(value);
+            this.authService.signOut();
+            alert('Pomyślnie zapisano zmiany');
+            this.router.navigate(['']);
             }
         );
     }
@@ -53,10 +59,14 @@ export class UserInfoComponent implements OnInit, OnDestroy {
             data: this.form.value
         });
 
-        dialogRef.afterClosed().pipe(
-            takeUntil(this.ngDestroy$.asObservable()),
-            switchMap(() => this.getCurrentUser()))
-            .subscribe();
+        dialogRef.afterClosed()
+            .pipe(
+                takeUntil(this.ngDestroy$.asObservable()),
+                tap(() => {
+                    this.authService.signOut();
+                    this.router.navigate(['']);
+                })
+            ).subscribe();
     }
 
     getCurrentUser() {

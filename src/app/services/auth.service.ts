@@ -52,5 +52,7 @@ export class AuthService {
 
   signOut() {
     localStorage.removeItem(jwtConfig.localStorageTokenKey);
+    localStorage.removeItem('login');
+    localStorage.removeItem('role');
   }
 }

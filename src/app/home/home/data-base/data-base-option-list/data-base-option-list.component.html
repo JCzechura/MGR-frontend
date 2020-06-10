@@ -1,0 +1,12 @@
+<div *ngIf="this.metaData$ | async">
+    <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="metaDataValue"
+            (change)="onMetaDataSelected($event)">
+        <mat-radio-button class="example-radio-button" *ngFor="let md  of this.metaData$ | async" [value]="md">
+            {{md.tableName}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <div>Your choose: {{metaDataValue? metaDataValue.tableName: ''}}</div>
+</div>
