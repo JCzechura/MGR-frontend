@@ -1,10 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UserDetails, UserPasswordData} from "../user-details.model";
-import {Observable} from "rxjs";
+import {UserPasswordData} from "../user-details.model";
 import {FormBuilder, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import {BackendService} from "../../../../core/backend/backend.service";
-import {urlList} from "../../../../../environments/url-list";
 import {UserInfoService} from "../user-info.service";
 
 const newPasswordValid: ValidatorFn = control => {

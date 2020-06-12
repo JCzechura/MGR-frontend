@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Edytuj</h2>
+
+<mat-dialog-content [formGroup]="formGroup">
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_01_Desc">
+        <mat-label>{{this.editData.metadata.attrib_01_Desc}}</mat-label>
+        <input matInput formControlName="attrib01">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_02_Desc">
+        <mat-label>{{this.editData.metadata.attrib_02_Desc}}</mat-label>
+        <input matInput formControlName="attrib02">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_03_Desc">
+        <mat-label>{{this.editData.metadata.attrib_03_Desc}}</mat-label>
+        <input matInput formControlName="attrib03">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_04_Desc">
+        <mat-label>{{this.editData.metadata.attrib_04_Desc}}</mat-label>
+        <input matInput formControlName="attrib04">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_05_Desc">
+        <mat-label>{{this.editData.metadata.attrib_05_Desc}}</mat-label>
+        <input matInput formControlName="attrib05">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="this.editData.metadata.attrib_06_Desc">
+        <mat-label>{{this.editData.metadata.attrib_06_Desc}}</mat-label>
+        <input matInput formControlName="attrib06">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">
+       Anuluj
+    </button>
+    <button class="mat-raised-button mat-primary button-save"(click)="save()" [disabled]="this.formGroup.invalid">
+      Zapisz
+    </button>
+</mat-dialog-actions>

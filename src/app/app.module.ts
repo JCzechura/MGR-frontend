@@ -17,6 +17,7 @@ import {AuthGuard} from "./core/route-guards/auth.guard";
 import {NonAuthGuard} from "./core/route-guards/non-auth.guard";
 import {TitleToolbarModule} from "./ui/title-toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS_PROVIDER} from "./core/snack-bar/mat-snack-bar-default-options.provider";
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import {MatTabsModule} from "@angular/material/tabs";
         LoginComponent,
     ],
     providers: [
+        MAT_SNACK_BAR_DEFAULT_OPTIONS_PROVIDER,
         AuthGuard,
         NonAuthGuard
     ],

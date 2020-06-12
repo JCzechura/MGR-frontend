@@ -89,4 +89,8 @@ export class DataBaseService {
       params: createParams(tableName, page, sort)
     });
   }
+
+  async updateDataBaseElement(formValue: DatabaseEntry) {
+      return this.backendService.post<DatabaseEntry>(urlList.databaseUpdatePOST, formValue).toPromise();
+  }
 }

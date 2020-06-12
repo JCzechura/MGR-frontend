@@ -21,7 +21,11 @@ export interface DatabaseEntry {
     attrib03: string;
     attrib04: string;
     attrib05: string;
+    attrib06: string;
 }
+
+export type DatabaseEntryFieldName = keyof DatabaseEntry;
+
 export interface PageChange {
     pageIndex: number;
     pageSize: number;

@@ -7,6 +7,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {DataBaseService} from "../data-base.service";
 import {DataBaseDataSource} from "../data-base-data-source";
 import {map, startWith} from "rxjs/operators";
+import {DatabaseEditDialogEntry} from "../data-base-edit-dialog/data-base-edit-dialog-entry";
+import {DataBaseEditDialogComponent} from "../data-base-edit-dialog/data-base-edit-dialog.component";
 
 const mapToField = <T, K extends keyof T>(fieldName: K) => map((item: T) => item[fieldName]);
 
@@ -88,8 +90,8 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
 
   editDict(row: any) {
     console.log(row);
-    // const dictEditDialogInfo: DictEditDialogEntry = {data: row, metadata: this._dictMetadata};
-    // this.dialog.open(DictEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
+    const dictEditDialogInfo: DatabaseEditDialogEntry = {data: row, metadata: this._dictMetadata};
+    this.dialog.open(DataBaseEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
   }
 
   ngOnDestroy(): void {
