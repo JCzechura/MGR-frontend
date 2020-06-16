@@ -1,11 +1,6 @@
-<h2 mat-dialog-title>Edytuj</h2>
+<h2 mat-dialog-title>Edytuj / Dodaj</h2>
 
 <mat-dialog-content [formGroup]="formGroup">
-
-    <mat-form-field *ngIf="this.editData.metadata.attrib_01_Desc">
-        <mat-label>{{this.editData.metadata.attrib_01_Desc}}</mat-label>
-        <input matInput formControlName="attrib01">
-    </mat-form-field>
 
     <mat-form-field *ngIf="this.editData.metadata.attrib_02_Desc">
         <mat-label>{{this.editData.metadata.attrib_02_Desc}}</mat-label>

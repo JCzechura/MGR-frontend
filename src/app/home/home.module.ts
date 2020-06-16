@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UserInfoComponent} from "./home/user-info/user-info.component";
-import {GarbageTruckRoutesComponent} from "./home/garbage-truck-routes/garbage-truck-routes.component";
+import {GarbageTruckRoutesComponent} from "./home/garbage-truck-routes/garbage-truck-routes/garbage-truck-routes.component";
 import {DataBaseComponent} from "./home/data-base/data-base/data-base.component";
 import {HomeRoutingModule} from "./home-routing.module";
 import {HomeComponent} from "./home/home.component";
@@ -18,12 +18,12 @@ import { PasswordChangeDialogComponent } from './home/user-info/password-change-
 import {MatDialogModule} from "@angular/material/dialog";
 import {DataBaseModule} from "./home/data-base/data-base.module";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {GarbageTruckRoutesModule} from "./home/garbage-truck-routes/garbage-truck-routes.module";
 
 
 @NgModule({
     declarations: [
         UserInfoComponent,
-        GarbageTruckRoutesComponent,
         HomeComponent,
         CurrentRouteComponent,
         ReportComponent,
@@ -41,7 +41,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         MatButtonModule,
         MatDialogModule,
         DataBaseModule,
-        MatTooltipModule
+        MatTooltipModule,
+        GarbageTruckRoutesModule
     ],
     entryComponents: [
         PasswordChangeDialogComponent

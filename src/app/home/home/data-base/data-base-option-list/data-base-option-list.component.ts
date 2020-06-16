@@ -14,9 +14,7 @@ export class DataBaseOptionListComponent implements OnInit {
 
   metaDataValue: Metadata;
   metaData$: Observable<Metadata[]> = this.dataBaseService.dictionariesMetadata$;
-  readonly addDictButtonSubject$: Subject<void> = new Subject<void>();
   private readonly _selectedMetaData$ = new BehaviorSubject<string | null>(null);
-  onMetaDataSelected$ = this._selectedMetaData$.asObservable();
 
   constructor(private dataBaseService: DataBaseService) { }
 

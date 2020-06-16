@@ -13,6 +13,7 @@ import { DataBaseEditDialogComponent } from './data-base-edit-dialog/data-base-e
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {MatInputModule} from "@angular/material/input";
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
+        MatButtonModule,
     ],
     entryComponents: [
         DataBaseEditDialogComponent

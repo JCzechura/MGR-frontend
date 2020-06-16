@@ -5,5 +5,6 @@ export const urlList: {[name: string]: string} = {
     updatePasswordPOST: 'ui/user/password',
     metadataGET: 'ui/metadata',
     databaseGET: 'ui/database',
-    databaseUpdatePOST: 'ui/database/update'
+    databaseUpdatePOST: 'ui/database/update',
+    databaseAddPOST: 'ui/database/new'
 };
