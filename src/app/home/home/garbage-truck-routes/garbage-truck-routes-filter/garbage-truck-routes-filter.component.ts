@@ -16,9 +16,9 @@ export class GarbageTruckRoutesFilterComponent implements OnChanges {
 
   constructor(private readonly fb: FormBuilder) {
     const controlsConfig = {
-      driverLogin: [null, Validators.min(1)],
-      routeId: [null, Validators.min(1)],
-      truckCode: [null, Validators.min(1)],
+      driverLogin: [null],
+      routeId: [null, Validators.min(0)],
+      truckCode: [null],
       dateFrom: [null],
       dateTo: [null]
     };
