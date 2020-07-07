@@ -1,1 +1,42 @@
-<p>garbage-truck-routes-filter works!</p>
+<form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <div class="flex-column flex">
+        <div class="flex-row">
+            <mat-form-field appearance="outline"
+                            class="flex">
+                <mat-label>data początkowa</mat-label>
+                <input matInput [matDatepicker]="pickerFrom" formControlName="dateFrom">
+                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFrom></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline"
+                            class="flex">
+                <mat-label>data końcowa</mat-label>
+                <input matInput [matDatepicker]="pickerTo" formControlName="dateTo">
+                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                <mat-datepicker #pickerTo></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="flex-row small-inputs">
+        <mat-form-field appearance="outline" class="flex">
+            <mat-label>Login kierowcy</mat-label>
+            <input matInput type="number" formControlName="driverLogin">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="flex">
+            <mat-label>ID trasy</mat-label>
+            <input matInput type="number" formControlName="routeId">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="flex">
+            <mat-label>Kod samochodu</mat-label>
+            <input matInput type="number" formControlName="truckCode">
+        </mat-form-field>
+    </div>
+    <div class="flex-row submit-button-row">
+        <button mat-flat-button color="primary" type="submit" [disabled]="disabled || filterForm.invalid">
+            WYSZUKAJ
+        </button>
+    </div>
+</form>

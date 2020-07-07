@@ -4,7 +4,7 @@
 }
 .search-container{
     flex-grow: 0.4;
-    min-width: 20vw;
+    min-width: 25vw;
 }
 app-garbage-truck-routes-map {
     flex-grow: 4;

@@ -4,8 +4,10 @@
 
 @import "../app/login/login.component.scss-theme";
 @import "../app/ui/title-toolbar/title-toolbar/title-toolbar.component.scss-theme";
+@import "../app/home/home/garbage-truck-routes/garbage-truck-routes-filter/garbage-truck-routes-filter.component.theme";
 
 @mixin custom-components-theme($theme) {
   @include login-component-theme($theme);
   @include title-toolbar-component-theme($theme);
+  @include garbage-truck-routes-filter-form-component-theme();
 }
