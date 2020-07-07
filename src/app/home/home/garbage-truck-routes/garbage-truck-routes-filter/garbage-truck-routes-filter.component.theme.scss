@@ -1,0 +1,11 @@
+@mixin garbage-truck-routes-filter-form-component-theme() {
+  app-garbage-truck-routes-filter {
+    .mat-form-field-infix {
+      width: 100px;
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+  }
+}

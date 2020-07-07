@@ -1,0 +1,39 @@
+:host {
+  padding-bottom: 11px;
+}
+form {
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.flex-row, .flex-column {
+  display: flex;
+
+  .flex {
+    flex: 1;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.flex-column {
+  flex-flow: column;
+}
+
+.flex-row {
+  flex-flow: row;
+}
+
+.submit-button-row{
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.small-inputs {
+  .mat-form-field {
+    width: 3vw;
+  }
+}

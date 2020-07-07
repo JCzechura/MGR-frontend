@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.locations-table {
+    flex: 1;
+    overflow: auto;
+
+    table {
+        width: 100%;
+    }
+}
+
+header {
+    display: flex;
+    align-items: baseline;
+
+    h1 {
+        flex: 1;
+    }
+}
+
+.mat-headline {
+    font-weight: bold;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    padding: {
+        left: 0.5em;
+        right: 0.5em;
+    }
+}

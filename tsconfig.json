@@ -3,6 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "ol": ["node_modules/ol/src"],
+      "ol/*": ["node_modules/ol/src/*"]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -19,6 +23,10 @@
       "dom"
     ]
   },
+  "include": [
+    "**/*.js",
+    "node_modules/ol/**/*.js"
+  ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true

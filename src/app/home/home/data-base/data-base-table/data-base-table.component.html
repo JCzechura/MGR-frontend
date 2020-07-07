@@ -1,3 +1,8 @@
+<div class="add-button" *ngIf="displayedColumns[0]">
+    <button mat-flat-button color="primary" class="add-dict-button"
+            (click)="addNewDict()" [disabled]="isAddButtonDisabled$">Dodaj element
+    </button>
+</div>
 <div class="dict-table">
     <table mat-table matSort [dataSource]="this.dataSource">
         <ng-container *ngIf="displayedColumns[0]" [matColumnDef]="displayedColumns[0]">

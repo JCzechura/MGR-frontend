@@ -56,6 +56,8 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
   }
 
   private _dictMetadata: Metadata;
+  isAddButtonDisabled$: false;
+
 
   @Input()
   set dictMetadata(dictMetadata: Metadata | null) {
@@ -119,5 +121,9 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
       this.displayedColumns.push(dictMetadata.attrib_06_Desc);
     }
     console.log(this.displayedColumns);
+  }
+
+  addNewDict() {
+    this.editDict({tableName: this.tableName});
   }
 }
