@@ -4,7 +4,7 @@
 
     <mat-form-field *ngIf="this.editData.metadata.attrib_02_Desc">
         <mat-label>{{this.editData.metadata.attrib_02_Desc}}</mat-label>
-        <input matInput formControlName="attrib02" [disabled]="this.editData.metadata.attrib_02_Desc == 'Login'">
+        <input matInput formControlName="attrib02" >
     </mat-form-field>
 
     <mat-form-field *ngIf="this.editData.metadata.attrib_03_Desc">

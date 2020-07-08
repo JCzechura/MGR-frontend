@@ -98,10 +98,8 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
 
   editDict(row: any) {
     console.log(row);
-    if(this.isLoggedAsAdmin) {
-      const dictEditDialogInfo: DatabaseEditDialogEntry = {data: row, metadata: this._dictMetadata};
-      this.dialog.open(DataBaseEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
-    }
+    const dictEditDialogInfo: DatabaseEditDialogEntry = {data: row, metadata: this._dictMetadata};
+    this.dialog.open(DataBaseEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
   }
 
   ngOnDestroy(): void {

@@ -25,7 +25,10 @@ export class DataBaseEditDialogComponent implements OnInit {
         const controlsConfig = {
             tableName: [this.editData.data.tableName],
             attrib01: [this.editData.data.attrib01],
-            attrib02: [this.editData.data.attrib02],
+            attrib02: [{
+                value: this.editData.data.attrib02,
+                disabled: this.editData.metadata.attrib_02_Desc === 'login'
+            }],
             attrib03: [this.editData.data.attrib03],
             attrib04: [this.editData.data.attrib04],
             attrib05: [this.editData.data.attrib05],
@@ -54,5 +57,10 @@ export class DataBaseEditDialogComponent implements OnInit {
         this.matSnackBar.open('SUKCES');
         this.dataBaseService.tableName = this.formGroup.get('tableName').value;
         this.dialogRef.close(updatedDict);
+    }
+
+    isLogin(b: string) {
+        console.log(b);
+        return true;
     }
 }
