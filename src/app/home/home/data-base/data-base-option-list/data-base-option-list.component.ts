@@ -22,6 +22,7 @@ export class DataBaseOptionListComponent implements OnInit {
     this._selectedMetaData$.subscribe(
         (val) => console.log(val)
     );
+
   }
 
   onMetaDataSelected($event: MatRadioChange) {

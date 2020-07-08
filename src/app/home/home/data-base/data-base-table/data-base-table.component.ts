@@ -9,6 +9,8 @@ import {DataBaseDataSource} from "../data-base-data-source";
 import {map, startWith} from "rxjs/operators";
 import {DatabaseEditDialogEntry} from "../data-base-edit-dialog/data-base-edit-dialog-entry";
 import {DataBaseEditDialogComponent} from "../data-base-edit-dialog/data-base-edit-dialog.component";
+import {Role} from "../../../../core/authorization/authorization.model";
+import {AuthService} from "../../../../core/authorization/auth.service";
 
 const mapToField = <T, K extends keyof T>(fieldName: K) => map((item: T) => item[fieldName]);
 
@@ -28,6 +30,8 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
   readonly pageSize$: Observable<number>;
   readonly areLocationsLoading$: Observable<boolean>;
   readonly tableName$: Observable<string>;
+
+  isLoggedAsAdmin: boolean;
   displayedColumns: string[] = [];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -38,6 +42,7 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
   private addDictButtonClickedSub: Subscription;
 
   constructor(private readonly dataBaseService: DataBaseService,
+              private authService: AuthService,
               private readonly dialog: MatDialog) {
     this.dataSource = new DataBaseDataSource(this.dataBaseService);
     this.listTotalLength$ = this.dataSource.dataBasePage$
@@ -53,6 +58,7 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
     this.pageSize$ = this.dataSource.dataBasePage$.pipe(mapToField('size'), startWith(INIT_PAGE_SIZE));
     this.areLocationsLoading$ = this.dataSource.isLoading$;
     this.tableName$ = this.dataBaseService.tableName$;
+    this.isLoggedAsAdmin = authService.getRole() === Role.ADMIN;
   }
 
   private _dictMetadata: Metadata;
@@ -92,8 +98,10 @@ export class DataBaseTableComponent implements OnInit, OnDestroy {
 
   editDict(row: any) {
     console.log(row);
-    const dictEditDialogInfo: DatabaseEditDialogEntry = {data: row, metadata: this._dictMetadata};
-    this.dialog.open(DataBaseEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
+    if(this.isLoggedAsAdmin) {
+      const dictEditDialogInfo: DatabaseEditDialogEntry = {data: row, metadata: this._dictMetadata};
+      this.dialog.open(DataBaseEditDialogComponent, {width: '500px', data: dictEditDialogInfo});
+    }
   }
 
   ngOnDestroy(): void {
