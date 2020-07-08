@@ -32,7 +32,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
       this.form = this.fb.group({
           id: [null, Validators.required],
           login: ['', Validators.required],
-          role: ['', Validators.required],
+          role: [{value: '', disabled:true}],
           description: ['', Validators.required],
           password: [null]
       });

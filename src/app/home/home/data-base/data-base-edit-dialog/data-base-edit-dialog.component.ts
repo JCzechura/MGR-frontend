@@ -27,7 +27,7 @@ export class DataBaseEditDialogComponent implements OnInit {
             attrib01: [this.editData.data.attrib01],
             attrib02: [{
                 value: this.editData.data.attrib02,
-                disabled: this.editData.metadata.attrib_02_Desc === 'login'
+                disabled: (this.editData.metadata.attrib_02_Desc === 'login' && this.editData.data.attrib01 != null)
             }],
             attrib03: [this.editData.data.attrib03],
             attrib04: [this.editData.data.attrib04],

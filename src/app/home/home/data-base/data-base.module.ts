@@ -14,6 +14,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -36,9 +38,14 @@ import {MatButtonModule} from "@angular/material/button";
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     entryComponents: [
         DataBaseEditDialogComponent
-    ]
+    ],
+      providers: [
+        {provide: MAT_DATE_LOCALE, useValue: 'pl'}
+      ]
 })
 export class DataBaseModule { }
