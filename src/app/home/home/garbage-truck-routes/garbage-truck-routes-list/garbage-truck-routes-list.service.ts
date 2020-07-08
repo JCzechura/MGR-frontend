@@ -12,8 +12,8 @@ interface RequestParams {
 }
 
 const appendFilter = (params: RequestParams, filter: GarbageTruckRoutesFilter) => {
-  if (filter.routeId) {
-    params.id = String(filter.routeId);
+  if (filter.routeId != null) {
+    params.routeId = String(filter.routeId);
   }
   if (filter.driverLogin) {
     params.driverLogin = filter.driverLogin;

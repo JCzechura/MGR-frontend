@@ -9,47 +9,40 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[0]}}</b>
             </th>
-            <td mat-cell *matCellDef="let dict">{{dict.tableName}}</td>
+            <td mat-cell *matCellDef="let dict">{{dict.attrib01}}</td>
         </ng-container>
 
        <ng-container *ngIf="displayedColumns[1]" [matColumnDef]="displayedColumns[1]">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[1]}}</b>
             </th>
-            <td mat-cell *matCellDef="let dict">{{dict.attrib01}}</td>
+            <td mat-cell *matCellDef="let dict">{{dict.attrib02}}</td>
         </ng-container>
 
         <ng-container *ngIf="displayedColumns[2]" [matColumnDef]="displayedColumns[2]">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[2]}}</b>
             </th>
-            <td mat-cell *matCellDef="let dict">{{dict.attrib02}}</td>
+            <td mat-cell *matCellDef="let dict">{{dict.attrib03}}</td>
         </ng-container>
 
         <ng-container *ngIf="displayedColumns[3]" [matColumnDef]="displayedColumns[3]">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[3]}}</b>
             </th>
-            <td mat-cell *matCellDef="let dict">{{dict.attrib03}}</td>
+            <td mat-cell *matCellDef="let dict">{{dict.attrib04}}</td>
         </ng-container>
 
         <ng-container *ngIf="displayedColumns[4]" [matColumnDef]="displayedColumns[4]">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[4]}}</b>
             </th>
-            <td mat-cell *matCellDef="let dict">{{dict.attrib04}}</td>
+            <td mat-cell *matCellDef="let dict">{{dict.attrib05}}</td>
         </ng-container>
 
         <ng-container *ngIf="displayedColumns[5]" [matColumnDef]="displayedColumns[5]">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 <b>{{displayedColumns[5]}}</b>
-            </th>
-            <td mat-cell *matCellDef="let dict">{{dict.attrib05}}</td>
-        </ng-container>
-
-        <ng-container *ngIf="displayedColumns[6]" [matColumnDef]="displayedColumns[6]">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <b>{{displayedColumns[6]}}</b>
             </th>
             <td mat-cell *matCellDef="let dict">{{dict.attrib06}}</td>
         </ng-container>
