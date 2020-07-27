@@ -62,9 +62,11 @@ export class UserInfoComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed()
             .pipe(
                 takeUntil(this.ngDestroy$.asObservable()),
-                tap(() => {
+                tap((value) => {
+                if (value) {
                     this.authService.signOut();
                     this.router.navigate(['']);
+                    }
                 })
             ).subscribe();
     }
@@ -73,7 +75,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
         return this.userService.getCurrentUser()
             .pipe(
                 takeUntil(this.ngDestroy$.asObservable()),
-                tap(value => {
+                tap((value) => {
                         console.log(value);
                         this.form.patchValue(value);
                     }
