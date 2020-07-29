@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Metadata} from "../data-base.model";
 import {DataBaseService} from "../data-base.service";
 import {MatRadioChange} from "@angular/material/radio";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-data-base-option-list',
@@ -19,6 +20,14 @@ export class DataBaseOptionListComponent implements OnInit {
   constructor(private dataBaseService: DataBaseService) { }
 
   ngOnInit() {
+    this.metaData$.subscribe(
+        values => {
+          console.log(values);
+          this.dataBaseService.tableName = values[0].tableName;
+          this.dataBaseService.selectedMetaData = values[0];
+          this.metaDataValue = values[0];
+        }
+    );
     this._selectedMetaData$.subscribe(
         (val) => console.log(val)
     );
