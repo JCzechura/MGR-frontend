@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
               index: 3
           },
           {
-              label: 'GENERUJ RAPORT',
-              link: './report',
+              label: 'ZAPLANUJ TRASY',
+              link: './plans',
               show: this.isLoggedAsAdmin,
               index: 4
           },

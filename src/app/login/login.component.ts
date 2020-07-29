@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   @Input() error: string | null;
   @Output() submitEM = new EventEmitter();
+  isLoggingIn = false;
 
   form: FormGroup;
   userData: UserData;
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   async submit() {
-
+    this.isLoggingIn = true;
     if (!this.form.valid) {
       return;
     }

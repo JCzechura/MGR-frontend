@@ -38,5 +38,9 @@
         </div>
       </form>
      </mat-card-content>
+    <mat-card-footer>
+        <mat-progress-bar [style.visibility]="isLoggingIn ? 'visible' : 'hidden'"
+                          mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
   </mat-card>
   

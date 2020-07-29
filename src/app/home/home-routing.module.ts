@@ -6,7 +6,7 @@ import {UserInfoComponent} from "./home/user-info/user-info.component";
 import {GarbageTruckRoutesComponent} from "./home/garbage-truck-routes/garbage-truck-routes/garbage-truck-routes.component";
 import {DataBaseComponent} from "./home/data-base/data-base/data-base.component";
 import {CurrentRouteComponent} from "./home/current-route/current-route.component";
-import {ReportComponent} from "./home/report/report.component";
+import {PlansComponent} from "./home/plans/plans.component";
 
 const routes: Routes = [
     {
@@ -19,7 +19,7 @@ const routes: Routes = [
             {path: 'routes', component: GarbageTruckRoutesComponent, canActivate: [AuthGuard]},
             {path: 'database', component: DataBaseComponent,  canActivate: [AuthGuard]},
             {path: 'current_route', component: CurrentRouteComponent, canActivate: [AuthGuard]},
-            {path: 'report', component: ReportComponent,  canActivate: [AuthGuard]},
+            {path: 'plans', component: PlansComponent,  canActivate: [AuthGuard]},
             {path: '', pathMatch: 'full', component: UserInfoComponent, canActivate: [AuthGuard]}
         ]
     }

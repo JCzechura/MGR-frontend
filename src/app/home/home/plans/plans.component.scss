@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  padding: 10px;
+}
+
+.button-column {
+  align-items: center;
+  padding-top: 10px;
+  width: 25vw;
+
+  button {
+    margin: 10px;
+    width: 98%;
+  }
+
+  button:last-of-type {
+    margin-bottom: 50px;
+  }
+
+  .loading{
+    margin: 0 auto;
+    color: brown;
+    text-align: center;
+    font-size: x-large;
+  }
+}
+
+.plans-table {
+  flex: 1;
+
+
+  table {
+    margin-left: 20px;
+    width: 98%;
+  }
+
+}
