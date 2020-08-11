@@ -1,10 +1,13 @@
 export interface PlansEntry {
-    index?: number;
-    totalNumber?: number;
     weekday: number;
     templateCode: string;
     driverLogin: string;
     truckCode: string;
+}
+
+export interface PlansWebObject {
+    totalNumber: number;
+    webObject: PlansEntry[];
 }
 
 export type PlansEntryFieldName = keyof PlansEntry;

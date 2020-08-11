@@ -4,10 +4,9 @@ import {MatSort, Sort} from "@angular/material/sort";
 import {map, startWith} from "rxjs/operators";
 import {PlansDataSource} from "./plans-data-source";
 import {PlansService} from "./plans.service";
-import {PlansEntry} from "./plans.model";
+import {PlansEntry, PlansWebObject} from "./plans.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {forkJoin, Observable} from "rxjs";
-import {urlList} from "../../../../environments/url-list";
 
 const mapToField = <T, K extends keyof T>(fieldName: K) => map((item: T) => item[fieldName]);
 
@@ -57,7 +56,7 @@ export class PlansComponent {
   }
 
   loadPlanFromFile(type: string, e: any) {
-    console.log( type);
+    console.log(type);
     this.isProcessing = true;
     console.log( this.isProcessing);
     this.file = e.target.files[0];
@@ -73,26 +72,24 @@ export class PlansComponent {
         let headersRow = this.getHeaderArray(csvRecordsArray);
         console.log(headersRow);
 
-        // this.rows = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length);
-        let csvArr = [];
-        let data = [];
+        let plansArray = [];
         for (let i = 1; i < csvRecordsArray.length; i++) {
           let curruntRecord = (<string>csvRecordsArray[i]).split(',');
           if (curruntRecord.length == headersRow.length) {
             let csvRecord: PlansEntry = {
-              index: i,
-              totalNumber: csvRecordsArray.length - 1,
               weekday: Number(curruntRecord[0].trim()),
               templateCode: curruntRecord[1].trim(),
               driverLogin: curruntRecord[2].trim(),
               truckCode: curruntRecord[3].trim()
             };
-            csvArr.push(csvRecord);
-            data.push(this.plansService.sendPlanRows(csvRecord, type));
+            plansArray.push(csvRecord);
           }
-
         }
-        forkJoin(data).subscribe(data => {
+        const plansWebObject: PlansWebObject = {
+          totalNumber: csvRecordsArray.length - 1,
+          webObject: plansArray
+        }
+        this.plansService.sendPlanRows(plansWebObject, type).subscribe(data => {
           console.log(data);
           this.isProcessing = false;
           alert('PLIK PRZETWORZONO POMYSLNIE');

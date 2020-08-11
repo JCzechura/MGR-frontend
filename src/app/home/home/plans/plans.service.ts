@@ -4,7 +4,7 @@ import {Sort} from "@angular/material/sort";
 import {urlList} from "../../../../environments/url-list";
 import {BackendService} from "../../../core/backend/backend.service";
 import {Page} from "../../../core/backend/page";
-import {PageChange, PlansEntry} from "./plans.model";
+import {PageChange, PlansEntry, PlansWebObject} from "./plans.model";
 
 
 interface RequestParams {
@@ -70,10 +70,10 @@ export class PlansService {
         });
     }
 
-    sendPlanRows(row: PlansEntry, type: string) {
+    sendPlanRows(body: PlansWebObject, type: string) {
         console.log(type);
         const path = type === 'new' ? urlList.plansNewPOST : urlList.plansExceptionalPOST;
-        return this.backendService.post<number>(path, row);
+        return this.backendService.post<number>(path, body);
 
     }
 
