@@ -16,12 +16,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {DataBaseModule} from "./home/data-base/data-base.module";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {GarbageTruckRoutesModule} from "./home/garbage-truck-routes/garbage-truck-routes.module";
-import {PlansComponent} from "./home/plans/plans.component";
+import {PlansComponent} from "./home/plans/plans/plans.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {WeekdayModule} from "../core/pipes/weekday/weekday.module";
+import { PlansConfirmDialogComponent } from './home/plans/plans-confirm-dialog/plans-confirm-dialog.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {WeekdayModule} from "../core/pipes/weekday/weekday.module";
         HomeComponent,
         CurrentRouteComponent,
         PlansComponent,
-        PasswordChangeDialogComponent
+        PasswordChangeDialogComponent,
+        PlansConfirmDialogComponent
     ],
     imports: [
         CommonModule,
@@ -53,7 +55,8 @@ import {WeekdayModule} from "../core/pipes/weekday/weekday.module";
         WeekdayModule
     ],
     entryComponents: [
-        PasswordChangeDialogComponent
+        PasswordChangeDialogComponent,
+        PlansConfirmDialogComponent
     ]
 })
 export class HomeModule {

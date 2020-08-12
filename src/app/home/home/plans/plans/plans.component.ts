@@ -1,12 +1,15 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
-import {map, startWith} from "rxjs/operators";
-import {PlansDataSource} from "./plans-data-source";
-import {PlansService} from "./plans.service";
-import {PlansEntry, PlansWebObject} from "./plans.model";
+import {filter, flatMap, map, startWith} from "rxjs/operators";
+import {PlansDataSource} from "../plans-data-source";
+import {PlansService} from "../plans.service";
+import {PlansEntry, PlansWebObject} from "../plans.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {forkJoin, Observable} from "rxjs";
+import {Observable} from "rxjs";
+import {DataBaseEditDialogComponent} from "../../data-base/data-base-edit-dialog/data-base-edit-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {PlansConfirmDialogComponent} from "../plans-confirm-dialog/plans-confirm-dialog.component";
 
 const mapToField = <T, K extends keyof T>(fieldName: K) => map((item: T) => item[fieldName]);
 
@@ -18,8 +21,7 @@ const INIT_PAGE_INDEX = 0;
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.scss']
 })
-export class PlansComponent {
-
+export class PlansComponent implements OnInit {
   readonly dataSource: PlansDataSource;
   readonly pageSizeOptions = [10, 50, 100, 200];
   readonly listTotalLength$: Observable<number>;
@@ -28,18 +30,15 @@ export class PlansComponent {
   readonly areLocationsLoading$: Observable<boolean>;
   public rows: PlansEntry[] = [];
   @ViewChild('csvReader', {static: true}) csvReader: any;
-
-
   displayedColumns: string[] = ['dzień tygodnia', 'kod trasy wzorcowej', 'login kierowcy', 'kod samochodu'];
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-
   file: any;
   isProcessing: boolean = false;
 
   constructor(private readonly plansService: PlansService,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private readonly dialog: MatDialog) {
     this.dataSource = new PlansDataSource(this.plansService);
     this.listTotalLength$ = this.dataSource.plansPage$
         .pipe(
@@ -55,10 +54,14 @@ export class PlansComponent {
     this.areLocationsLoading$ = this.dataSource.isLoading$;
   }
 
+  ngOnInit(): void {
+    this.plansService.checkIfNextWeekIsPlanned();
+  }
+
   loadPlanFromFile(type: string, e: any) {
     console.log(type);
     this.isProcessing = true;
-    console.log( this.isProcessing);
+    console.log(this.isProcessing);
     this.file = e.target.files[0];
     if (this.isValidCSVFile(this.file)) {
 
@@ -74,13 +77,13 @@ export class PlansComponent {
 
         let plansArray = [];
         for (let i = 1; i < csvRecordsArray.length; i++) {
-          let curruntRecord = (<string>csvRecordsArray[i]).split(',');
-          if (curruntRecord.length == headersRow.length) {
+          let currentRecord = (<string>csvRecordsArray[i]).split(',');
+          if (currentRecord.length == headersRow.length) {
             let csvRecord: PlansEntry = {
-              weekday: Number(curruntRecord[0].trim()),
-              templateCode: curruntRecord[1].trim(),
-              driverLogin: curruntRecord[2].trim(),
-              truckCode: curruntRecord[3].trim()
+              weekday: Number(currentRecord[0].trim()),
+              templateCode: currentRecord[1].trim(),
+              driverLogin: currentRecord[2].trim(),
+              truckCode: currentRecord[3].trim()
             };
             plansArray.push(csvRecord);
           }
@@ -94,10 +97,6 @@ export class PlansComponent {
           this.isProcessing = false;
           alert('PLIK PRZETWORZONO POMYSLNIE');
         });
-
-
-        // await this.plansService.sendPlanRows(this.rows, type);
-
       };
 
       fileReader.onerror = function () {
@@ -123,11 +122,6 @@ export class PlansComponent {
     return file.name.endsWith(".csv");
   }
 
-  // getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
-  //
-  //   return csvArr;
-  // }
-
   getHeaderArray(csvRecordsArr: any) {
     let headers = (<string>csvRecordsArr[0]).split(',');
     let headerArray = [];
@@ -150,6 +144,15 @@ export class PlansComponent {
   }
 
   plan() {
-    this.plansService.plan().subscribe(() =>alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE'));
+    if (this.plansService.isNextWeekPlanned) {
+      this.dialog.open(PlansConfirmDialogComponent, {width: '700px'}).afterClosed()
+          .pipe(
+              filter(value => value),
+              flatMap(() => this.plansService.plan())
+          ).subscribe(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE'));
+
+    } else {
+      this.plansService.plan().subscribe(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE'));
+    }
   }
 }

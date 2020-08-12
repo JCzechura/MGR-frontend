@@ -6,7 +6,7 @@ import {UserInfoComponent} from "./home/user-info/user-info.component";
 import {GarbageTruckRoutesComponent} from "./home/garbage-truck-routes/garbage-truck-routes/garbage-truck-routes.component";
 import {DataBaseComponent} from "./home/data-base/data-base/data-base.component";
 import {CurrentRouteComponent} from "./home/current-route/current-route.component";
-import {PlansComponent} from "./home/plans/plans.component";
+import {PlansComponent} from "./home/plans/plans/plans.component";
 
 const routes: Routes = [
     {

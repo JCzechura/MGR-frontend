@@ -12,4 +12,5 @@ export const urlList: {[name: string]: string} = {
     plansNewPOST: 'ui/route-plans/new',
     plansExceptionalPOST: 'ui/route-plans/exceptional',
     planGET: 'ui/route-plans/plan',
+    checkIfNextWeekIsPlannedGET: 'ui/settings/is-next-week-planned',
 };

@@ -36,6 +36,7 @@ export class PlansService {
         pageSize: INIT_PAGE_SIZE,
         pageIndex: INIT_PAGE_INDEX
     });
+    isNextWeekPlanned: boolean = false;
 
     constructor(private backendService: BackendService) {
 
@@ -79,5 +80,12 @@ export class PlansService {
 
     plan() {
         return this.backendService.get<number>(urlList.planGET);
+    }
+
+    checkIfNextWeekIsPlanned() {
+        this.backendService.get<boolean>(urlList.checkIfNextWeekIsPlannedGET)
+            .subscribe(value => {
+                this.isNextWeekPlanned = value
+            });
     }
 }

@@ -1,0 +1,8 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-load{
+    margin-left: 1em;
+}
