@@ -88,4 +88,8 @@ export class PlansService {
                 this.isNextWeekPlanned = value
             });
     }
+
+    getIfNextWeekIsPlanned() {
+        return this.backendService.get<boolean>(urlList.checkIfNextWeekIsPlannedGET);
+    }
 }

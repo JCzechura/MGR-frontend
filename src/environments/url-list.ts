@@ -8,6 +8,7 @@ export const urlList: {[name: string]: string} = {
     databaseUpdatePOST: 'ui/database/update',
     databaseAddPOST: 'ui/database/new',
     routesGET: 'ui/routes/improved',
+    routeDetailsGET: 'ui/routes/improved/details',
     plansGET: 'ui/route-plans',
     plansNewPOST: 'ui/route-plans/new',
     plansExceptionalPOST: 'ui/route-plans/exceptional',

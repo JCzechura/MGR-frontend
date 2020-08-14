@@ -57,7 +57,7 @@
             mat-row
             *matRowDef="let row; columns: displayedColumns;"
             [attr.location-id]="row.id"
-            (dblclick)="goToCaseDetails(row)">
+            (dblclick)="goToCaseDetails(row.id)">
         </tr>
     </table>
 </div>

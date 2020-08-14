@@ -100,4 +100,11 @@ export class GarbageTruckRoutesListService {
       params: createParams(locationFilter, page, sort)
     });
   }
+
+  getRouteDetails(locationId: number) {
+    const params = {id: locationId.toString()};
+    return this.backendService.get(urlList.routeDetailsGET,
+        {params}
+    );
+  }
 }

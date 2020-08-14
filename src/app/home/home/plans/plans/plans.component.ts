@@ -1,13 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
-import {filter, flatMap, map, startWith} from "rxjs/operators";
+import {catchError, filter, flatMap, map, share, startWith, switchMap, takeUntil, tap} from "rxjs/operators";
 import {PlansDataSource} from "../plans-data-source";
 import {PlansService} from "../plans.service";
 import {PlansEntry, PlansWebObject} from "../plans.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Observable} from "rxjs";
-import {DataBaseEditDialogComponent} from "../../data-base/data-base-edit-dialog/data-base-edit-dialog.component";
+import {EMPTY, merge, Observable, Subject} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {PlansConfirmDialogComponent} from "../plans-confirm-dialog/plans-confirm-dialog.component";
 
@@ -21,14 +20,15 @@ const INIT_PAGE_INDEX = 0;
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.scss']
 })
-export class PlansComponent implements OnInit {
+export class PlansComponent implements OnDestroy {
   readonly dataSource: PlansDataSource;
   readonly pageSizeOptions = [10, 50, 100, 200];
   readonly listTotalLength$: Observable<number>;
   readonly pageIndex$: Observable<number>;
   readonly pageSize$: Observable<number>;
   readonly areLocationsLoading$: Observable<boolean>;
-  public rows: PlansEntry[] = [];
+  private ngDestroy$ = new Subject();
+
   @ViewChild('csvReader', {static: true}) csvReader: any;
   displayedColumns: string[] = ['dzień tygodnia', 'kod trasy wzorcowej', 'login kierowcy', 'kod samochodu'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -54,8 +54,9 @@ export class PlansComponent implements OnInit {
     this.areLocationsLoading$ = this.dataSource.isLoading$;
   }
 
-  ngOnInit(): void {
-    this.plansService.checkIfNextWeekIsPlanned();
+  ngOnDestroy(): void {
+    this.ngDestroy$.next();
+    this.ngDestroy$.complete();
   }
 
   loadPlanFromFile(type: string, e: any) {
@@ -144,15 +145,32 @@ export class PlansComponent implements OnInit {
   }
 
   plan() {
-    if (this.plansService.isNextWeekPlanned) {
-      this.dialog.open(PlansConfirmDialogComponent, {width: '700px'}).afterClosed()
-          .pipe(
-              filter(value => value),
-              flatMap(() => this.plansService.plan())
-          ).subscribe(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE'));
 
-    } else {
-      this.plansService.plan().subscribe(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE'));
-    }
+    const isNextWeekPlanned$ = this.plansService.getIfNextWeekIsPlanned().pipe(share());
+
+    const nextWeekNotPlanned = isNextWeekPlanned$.pipe(
+        filter(value => !value),
+        switchMap(() => this.plansService.plan()),
+        tap(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE')),
+        catchError(() => {
+          alert('NIE UDALO SIĘ ZAPLANOWAC PRZYSZLEGO TYGODNIA')
+          return EMPTY;
+        }));
+
+    const nextWeekPlanned = isNextWeekPlanned$.pipe(
+        filter(value => value),
+        flatMap(() => this.dialog.open(PlansConfirmDialogComponent, {width: '700px'}).afterClosed()),
+        filter(value => value),
+        flatMap(() => this.plansService.plan()),
+        tap(() => alert('PRZYSZLY TYDZIEN ZAPLANOWANY POMYSLNIE')),
+        catchError(() => {
+          alert('NIE UDALO SIĘ ZAPLANOWAC PRZYSZLEGO TYGODNIA')
+          return EMPTY;
+        }));
+
+    merge(nextWeekNotPlanned, nextWeekPlanned).pipe(
+        takeUntil(this.ngDestroy$.asObservable())
+    ).subscribe();
+
   }
 }
