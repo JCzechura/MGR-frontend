@@ -61,9 +61,9 @@ export class GarbageTruckRoutesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToCaseDetails(locationId: number) {// : Promise<boolean> {
+  goToCaseDetails(locationId: number) {
     console.log(locationId);
-    this.garbageTruckRoutesListService.getRouteDetails(locationId).subscribe(val => console.log(val));
+    this.garbageTruckRoutesListService.getRouteDetails(locationId);
   }
 
   pageChanged({pageSize, pageIndex}: PageEvent): void {

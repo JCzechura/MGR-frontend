@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="title">
+        <h4>WYBRANA TRASA - SZCZEGÓŁY:</h4>
+    </div>
+    <div *ngIf="this.garbageTruckRoutesListService.garbageTruckRouteDetails$ | async as details">
+        <div>ID: {{details.id}}</div>
+        <div>data: {{details.referenceRoute.date | date:"yyyy/MM/dd" }}</div>
+        <div>kierowca: {{details.referenceRoute.driverLogin}}</div>
+        <div>samochód: {{details.referenceRoute.truckCode}}</div>
+        <div>wzorzec trasy: {{details.referenceRoute.templateCode}}</div>
+        <mat-list role="list">
+            <div mat-subheader>pominięte pojemniki:</div>
+            <mat-list-item *ngFor="let container of details.ignoredWastes" >{{ container.code }}</mat-list-item>
+        </mat-list>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+:host{
+    width: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    color: rgba(0, 0, 0, 0.87);
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}

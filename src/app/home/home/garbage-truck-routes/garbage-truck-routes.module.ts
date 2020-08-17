@@ -14,6 +14,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import { GarbageTruckRoutesDetailsComponent } from './garbage-truck-routes-details/garbage-truck-routes-details.component';
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {MatSortModule} from "@angular/material/sort";
     GarbageTruckRoutesComponent,
     GarbageTruckRoutesFilterComponent,
     GarbageTruckRoutesListComponent,
-    GarbageTruckRoutesMapComponent
+    GarbageTruckRoutesMapComponent,
+    GarbageTruckRoutesDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,8 @@ import {MatSortModule} from "@angular/material/sort";
     MatProgressBarModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pl'}

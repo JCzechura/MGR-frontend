@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Sort} from '@angular/material';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {GarbageTruckRoutesListEntry, PageChange} from "./garbage-truck-routes-list.model";
+import {GarbageTruckRoutesListEntry, PageChange, GarbageTruckRouteDetails} from "./garbage-truck-routes-list.model";
 import {BackendService} from "../../../../core/backend/backend.service";
 import {GarbageTruckRoutesFilter} from "../garbage-truck-routes-filter/garbage-truck-routes-filter.model";
 import {Page} from "../../../../core/backend/page";
@@ -57,6 +57,8 @@ const INIT_PAGE_INDEX = 0;
   providedIn: 'root'
 })
 export class GarbageTruckRoutesListService {
+
+  garbageTruckRouteDetails$: Observable<GarbageTruckRouteDetails>;
   private readonly _pageChange$: BehaviorSubject<PageChange> = new BehaviorSubject<PageChange>({
     pageSize: INIT_PAGE_SIZE,
     pageIndex: INIT_PAGE_INDEX
@@ -103,7 +105,7 @@ export class GarbageTruckRoutesListService {
 
   getRouteDetails(locationId: number) {
     const params = {id: locationId.toString()};
-    return this.backendService.get(urlList.routeDetailsGET,
+    this.garbageTruckRouteDetails$ = this.backendService.get<GarbageTruckRouteDetails>(urlList.routeDetailsGET,
         {params}
     );
   }
