@@ -8,7 +8,6 @@ import {GarbageTruckRoutesListService} from "../garbage-truck-routes-list/garbag
 })
 export class GarbageTruckRoutesDetailsComponent implements OnInit {
 
-  garbageTruckRouteDetails$ = this.garbageTruckRoutesListService.garbageTruckRouteDetails$;
   constructor(public garbageTruckRoutesListService: GarbageTruckRoutesListService) { }
 
   ngOnInit() {

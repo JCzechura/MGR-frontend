@@ -3,14 +3,54 @@
         <h4>WYBRANA TRASA - SZCZEGÓŁY:</h4>
     </div>
     <div *ngIf="this.garbageTruckRoutesListService.garbageTruckRouteDetails$ | async as details">
-        <div>ID: {{details.id}}</div>
-        <div>data: {{details.referenceRoute.date | date:"yyyy/MM/dd" }}</div>
-        <div>kierowca: {{details.referenceRoute.driverLogin}}</div>
-        <div>samochód: {{details.referenceRoute.truckCode}}</div>
-        <div>wzorzec trasy: {{details.referenceRoute.templateCode}}</div>
-        <mat-list role="list">
-            <div mat-subheader>pominięte pojemniki:</div>
-            <mat-list-item *ngFor="let container of details.ignoredWastes" >{{ container.code }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item>ID: {{details.id}}</mat-list-item>
+            <mat-list-item>data: {{details.referenceRoute.date | date:"yyyy/MM/dd" }}</mat-list-item>
+            <mat-list-item>kierowca: {{details.referenceRoute.driverLogin}}</mat-list-item>
+            <mat-list-item>pojazd: {{details.referenceRoute.truckCode}}</mat-list-item>
+            <mat-list-item>wzorzec trasy: {{details.referenceRoute.templateCode}}</mat-list-item>
+            <mat-divider class="inner"></mat-divider>
+            <mat-list-item>pominięte pojemniki:</mat-list-item>
+            <div class="containers-list">
+                <mat-list-item *ngFor="let container of details.ignoredWastes">{{ container.code }}</mat-list-item>
+            </div>
+            <mat-divider class="inner"></mat-divider>
+            <div class="title">
+                <h4>MAPA - LEGENDA:</h4>
+            </div>
+            <mat-list-item>
+                <div class="desc-item">
+                    <div>
+                        <mat-icon class="purple-icon">remove</mat-icon>
+                    </div>
+                    <div>trasa wzorcowa</div>
+                </div>
+            </mat-list-item>
+            <mat-list-item>
+                <div class="desc-item">
+                    <div>
+                        <mat-icon class="blue-icon">remove</mat-icon>
+                    </div>
+                    <div>trasa pojazdu</div>
+                </div>
+            </mat-list-item>
+            <mat-list-item>
+                <div class="desc-item">
+                    <div>
+                        <mat-icon class="red-icon">lens</mat-icon>
+                    </div>
+                    <div>pominięty pojemnik</div>
+                </div>
+            </mat-list-item>
+            <mat-list-item>
+                <div class="desc-item">
+                    <div>
+                        <mat-icon class="black-icon">lens</mat-icon>
+                    </div>
+                    <div>miejsce wyładunku</div>
+                </div>
+            </mat-list-item>
         </mat-list>
     </div>
 </div>

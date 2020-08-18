@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Sort} from '@angular/material';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {GarbageTruckRoutesListEntry, PageChange, GarbageTruckRouteDetails} from "./garbage-truck-routes-list.model";
+import {GarbageTruckRouteDetails, GarbageTruckRoutesListEntry, PageChange} from "./garbage-truck-routes-list.model";
 import {BackendService} from "../../../../core/backend/backend.service";
 import {GarbageTruckRoutesFilter} from "../garbage-truck-routes-filter/garbage-truck-routes-filter.model";
 import {Page} from "../../../../core/backend/page";
 import {urlList} from "../../../../../environments/url-list";
+import {tap} from 'rxjs/operators';
+import {GarbageTruckRoutesMapService} from "../garbage-truck-routes-map/garbage-truck-routes-map.service";
 
 interface RequestParams {
   [paramName: string]: string | string[];
@@ -66,7 +68,7 @@ export class GarbageTruckRoutesListService {
   private readonly _sort$: BehaviorSubject<Sort | null> = new BehaviorSubject<Sort | null>(null);
   private readonly _routesFilter$: BehaviorSubject<GarbageTruckRoutesFilter> = new BehaviorSubject<GarbageTruckRoutesFilter>({});
 
-  constructor(private readonly backendService: BackendService) {
+  constructor(private readonly backendService: BackendService, private garbageTruckRoutesMapService: GarbageTruckRoutesMapService) {
   }
 
   get pageChange$(): Observable<PageChange> {
@@ -107,6 +109,34 @@ export class GarbageTruckRoutesListService {
     const params = {id: locationId.toString()};
     this.garbageTruckRouteDetails$ = this.backendService.get<GarbageTruckRouteDetails>(urlList.routeDetailsGET,
         {params}
-    );
+    ).pipe(
+        tap(value => {
+          console.log(value);
+          this.garbageTruckRoutesMapService.ignoredWastesMarkersVectorSource.clear();
+          this.garbageTruckRoutesMapService.unloadingMarkersVectorSource.clear();
+          this.garbageTruckRoutesMapService.templateLineVectorSource.clear();
+          this.garbageTruckRoutesMapService.improvedLineVectorSource.clear();
+          if (value.ignoredWastes) {
+            for (const ignoredWaste of value.ignoredWastes) {
+              console.log('ignore');
+              this.garbageTruckRoutesMapService.addIgnoredWastesMarker(ignoredWaste.location.lon, ignoredWaste.location.lat, ignoredWaste.code);
+            }
+          }
+          if (value.unloadingLocations) {
+            console.log('unloading');
+            for (const unloadingLocation of value.unloadingLocations) {
+              this.garbageTruckRoutesMapService.addUnloadingMarker(unloadingLocation.lon, unloadingLocation.lat);
+            }
+          }
+          if (value.linePoints) {
+            console.log('line');
+            this.garbageTruckRoutesMapService.createImprovedLine(value.linePoints);
+          }
+          if (value.templateLinePoints) {
+            console.log('tempLine');
+            this.garbageTruckRoutesMapService.createTemplateLine(value.templateLinePoints);
+          }
+        })
+    )
   }
 }

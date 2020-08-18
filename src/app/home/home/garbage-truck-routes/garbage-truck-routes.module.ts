@@ -16,6 +16,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import { GarbageTruckRoutesDetailsComponent } from './garbage-truck-routes-details/garbage-truck-routes-details.component';
 import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatListModule} from "@angular/material/list";
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pl'}
